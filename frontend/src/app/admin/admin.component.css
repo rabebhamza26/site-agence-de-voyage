@@ -1,0 +1,59 @@
+/* Dashboard container */
+.dashboard {
+  max-width: 900px;
+  margin: 50px auto;
+  padding: 30px;
+  background: #ffffff;
+  border-radius: 15px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Titre du dashboard */
+.dashboard h2 {
+  font-size: 2rem;
+  color: #0d6efd;
+  margin-bottom: 40px;
+  font-weight: 700;
+}
+
+/* Liens des sections */
+.dashboard .links {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+/* Style des boutons liens */
+.dashboard .links a {
+  display: inline-block;
+  padding: 15px 25px;
+  background: linear-gradient(90deg, #0d6efd, #6610f2);
+  color: #ffffff;
+  font-weight: 600;
+  border-radius: 10px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+/* Hover des boutons */
+.dashboard .links a:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+  background: linear-gradient(90deg, #6610f2, #0d6efd);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .dashboard .links {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .dashboard .links a {
+    width: 100%;
+  }
+}

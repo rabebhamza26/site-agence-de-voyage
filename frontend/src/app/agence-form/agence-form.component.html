@@ -1,0 +1,31 @@
+<div class="container mt-4">
+    <h2>{{ isEditMode ? "Modifier" : "Ajouter" }} une agence</h2>
+    <form [formGroup]="agenceForm" (ngSubmit)="onSubmit()" enctype="multipart/form-data">
+        <div class="form-group mb-3"> <label>Nom de l'agence</label> <input formControlName="nomAgence"
+                class="form-control" type="text" />
+            <div *ngIf=" agenceForm.get('nomAgence')?.invalid && agenceForm.get('nomAgence')?.touched "
+                class="text-danger"> Nom requis </div>
+        </div>
+        <div class="form-group mb-3"> <label>Adresse</label> <input formControlName="adresse" class="form-control"
+                type="text" />
+            <div *ngIf=" agenceForm.get('adresse')?.invalid && agenceForm.get('adresse')?.touched " class="text-danger">
+                Adresse requise </div>
+        </div>
+        <div class="form-group mb-3"> <label>Offre</label> <input formControlName="offre" class="form-control"
+                type="text" />
+            <div *ngIf=" agenceForm.get('offre')?.invalid && agenceForm.get('offre')?.touched " class="text-danger">
+                Offre requise </div>
+        </div>
+        <div class="form-group mb-3"> <label>Description</label> <textarea formControlName="description"
+                class="form-control"></textarea> </div>
+        <div class="form-group mb-3"> <label>Image</label> <input type="file" (change)="onFileSelected($event)"
+                class="form-control" /> <img *ngIf="agence?.image && !selectedFile"
+                [src]="'http://localhost:3000/upload/' + agence.image" class="img-fluid rounded mb-3" /> </div>
+        <div class="form-group mb-3"> <label>Prix (€)</label> <input formControlName="prix" class="form-control"
+                type="number" min="0" />
+            <div *ngIf=" agenceForm.get('prix')?.invalid && agenceForm.get('prix')?.touched " class="text-danger"> Prix
+                valide requis </div>
+        </div> <button type="submit" class="btn btn-primary me-2"> {{ isEditMode ? "Mettre à jour" : "Ajouter" }}
+        </button> <button type="button" routerLink="/agences" class="btn btn-secondary"> Annuler </button>
+    </form>
+</div>

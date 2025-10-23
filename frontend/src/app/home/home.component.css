@@ -1,0 +1,113 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+/* SECTION HERO */
+.home-hero {
+  height: 80vh;
+  background: url('/assets/images/home-slide-2.png') no-repeat center center/cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: white;
+  position: relative;
+}
+
+.hero-content {
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 30px;
+  border-radius: 10px;
+}
+
+.hero-content h1 {
+  font-size: 3rem;
+  font-weight: bold;
+  margin: 15px 0;
+}
+
+.hero-btn {
+  background-color: #7a2c91;
+  color: white;
+  padding: 10px 25px;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.hero-btn:hover {
+  background-color: #5d2072;
+}
+
+/* SECTION OFFRES POPULAIRES */
+.agency-card {
+  border-radius: 15px;
+  overflow: hidden;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.agency-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+}
+
+.card-img-top {
+  height: 220px;
+  object-fit: cover;
+}
+
+.btn-gradient {
+  background: linear-gradient(90deg, #007bff, #00c6ff);
+  color: white;
+  border: none;
+  border-radius: 25px;
+  transition: 0.3s;
+}
+
+.btn-gradient:hover {
+  background: linear-gradient(90deg, #0056b3, #0099cc);
+  transform: scale(1.05);
+}
+
+/* BOUTON VOIR PLUS */
+.voir-plus-btn {
+  display: inline-block;
+  margin-top: 2rem;
+  padding: 0.8rem 1.5rem;
+  background: #2c3e50;
+  color: #fff;
+  border-radius: 8px;
+  font-weight: bold;
+  transition: background 0.3s ease;
+}
+
+.voir-plus-btn:hover {
+  background: #1a242f;
+}
+
+/* FOOTER */
+.footer {
+  background: url('/assets/images/footer-bg.jpg') no-repeat center/cover;
+  padding: 3rem;
+}
+
+.footer .box-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
+  gap: 1rem;
+}
+
+.footer .box h3 {
+  color: #fff;
+  font-size: 1.6rem;
+}
+
+.footer .box a {
+  color: #ccc;
+  font-size: 1.4rem;
+  display: block;
+  margin-top: 0.5rem;
+}
+
+.footer .box a:hover i {
+  padding-right: 1rem;
+}

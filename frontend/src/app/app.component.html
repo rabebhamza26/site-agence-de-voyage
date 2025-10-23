@@ -1,0 +1,45 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary shadow-sm py-3">
+  <div class="container">
+    <!-- Logo -->
+    <a class="navbar-brand d-flex align-items-center" routerLink="/home">
+      <img src="assets/images/logo.png" class="logo-img me-2" alt="" />
+      <span class="logo-text fw-bold">Dream Voyage</span>
+    </a>
+
+    <!-- Toggle pour mobile -->
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarNav"
+      aria-controls="navbarNav"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- Liens -->
+    <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+      <ul class="navbar-nav align-items-center">
+        <!-- Connexion -->
+        <li class="nav-item" *ngIf="!authService.isLoggedIn()">
+          <a routerLink="/login" class="nav-link">
+              <i class="bi bi-person-circle me-2"></i> Connexion
+
+          </a>
+        </li>
+
+        <!-- Déconnexion -->
+        <li class="nav-item" *ngIf="authService.isLoggedIn()">
+  <button class="btn btn-danger btn-sm" (click)="authService.logout()">
+    <i class="bi bi-box-arrow-right me-1"></i> Déconnexion
+  </button>
+</li>
+
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<router-outlet></router-outlet>

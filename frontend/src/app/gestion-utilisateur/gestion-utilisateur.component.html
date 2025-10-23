@@ -1,0 +1,64 @@
+<div class="container mt-4">
+  <!-- Bouton Retour Dashboard -->
+  <div class="mb-3">
+    <a routerLink="/dashboard" class="btn btn-primary">
+      <i class="bi bi-arrow-left-circle me-1"></i> Retour
+    </a>
+  </div>
+
+  <h2 class="mb-4 text-primary">Gestion des Utilisateurs</h2>
+
+  <!-- Formulaire -->
+  <form (ngSubmit)="saveUser()">
+    <div class="mb-2">
+      <input type="text" class="form-control" placeholder="Nom" [(ngModel)]="userForm.nom" name="nom" required />
+    </div>
+    <div class="mb-2">
+      <input type="text" class="form-control" placeholder="Prénom" [(ngModel)]="userForm.prenom" name="prenom" required />
+    </div>
+    <div class="mb-2">
+      <input type="email" class="form-control" placeholder="Email" [(ngModel)]="userForm.email" name="email" required />
+    </div>
+    <div class="mb-2">
+      <input type="text" class="form-control" placeholder="Téléphone" [(ngModel)]="userForm.telephone" name="telephone" required />
+    </div>
+    <div class="mb-2">
+      <input type="text" class="form-control" placeholder="Nom d'utilisateur" [(ngModel)]="userForm.username" name="username" required />
+    </div>
+    <div class="mb-2">
+      <input type="password" class="form-control" placeholder="Mot de passe" [(ngModel)]="userForm.password" name="password" required />
+    </div>
+
+    <button type="submit" class="btn btn-primary">{{ isEdit ? "Mettre à jour" : "Ajouter" }}</button>
+    <button type="button" class="btn btn-secondary ms-2" (click)="resetForm()">Annuler</button>
+  </form>
+
+  <!-- Liste des utilisateurs -->
+  <h3 class="mt-5">Liste des Utilisateurs</h3>
+
+  <table class="table table-striped mt-3">
+    <thead>
+      <tr>
+        <th>Nom</th>
+        <th>Prénom</th>
+        <th>Email</th>
+        <th>Téléphone</th>
+        <th>Username</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let user of users">
+        <td>{{ user.nom }}</td>
+        <td>{{ user.prenom }}</td>
+        <td>{{ user.email }}</td>
+        <td>{{ user.telephone }}</td>
+        <td>{{ user.username }}</td>
+        <td>
+          <button class="btn btn-sm btn-warning me-2" (click)="editUser(user)">Éditer</button>
+          <button class="btn btn-sm btn-danger" (click)="deleteUser(user)">Supprimer</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

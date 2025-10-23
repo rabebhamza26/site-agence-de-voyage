@@ -1,0 +1,60 @@
+<div class="container my-5">
+  <h2 class="text-center mb-5 fw-bold text-primary">🌍 Nos Offres d'Agences</h2>
+
+  <div class="row g-4">
+    <div class="col-md-4" *ngFor="let agence of agences">
+      <div class="card h-100 border-0 shadow-lg agency-card">
+        
+        <!-- Image -->
+        <img
+          [src]="'http://localhost:3000/upload/' + agence.image"
+          class="card-img-top"
+          alt="Image agence"
+        />
+
+        <!-- Contenu -->
+        <div class="card-body d-flex flex-column">
+          <h5 class="card-title text-center text-primary fw-bold">
+            {{ agence.nomAgence }}
+          </h5>
+
+          <p class="card-text small text-muted text-center">
+            {{ agence.description || 'Description non disponible.' }}
+          </p>
+
+          <ul class="list-group list-group-flush mb-3">
+            <li class="list-group-item">
+              <strong>🏢 Adresse :</strong> {{ agence.adresse }}
+            </li>
+            <li class="list-group-item">
+              <strong>🎁 Offre :</strong> {{ agence.offre }}
+            </li>
+            <li class="list-group-item">
+              <strong>💰 Prix :</strong> {{ agence.prix }} TND
+            </li>
+            <li class="list-group-item">
+              <strong>✅ Disponibilité :</strong>
+              <span
+                class="badge"
+                [ngClass]="agence.disponible ? 'bg-success' : 'bg-danger'"
+              >
+                {{ agence.disponible ? 'Disponible' : 'Complet' }}
+              </span>
+            </li>
+          </ul>
+
+          <!-- Bouton -->
+          <div class="mt-auto">
+            <a
+              routerLink="/reservationclient"
+              class="btn btn-gradient w-100 fw-bold"
+              [class.disabled]="!agence.disponible"
+            >
+              Réserver maintenant
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

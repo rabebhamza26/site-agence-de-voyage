@@ -1,0 +1,119 @@
+<!-- SECTION HERO -->
+<section class="home-hero">
+  <div class="hero-content">
+    <span>Explorer, Découvrir, Voyage</span>
+    <h1>DÉCOUVRIR LES NOUVEAUX ENDROITS</h1>
+    <a routerLink="/agences" class="hero-btn">Découvrir Plus</a>
+  </div>
+</section>
+
+<!-- SECTION SERVICES -->
+<section class="services">
+  <h1 class="heading-title">Nos services</h1>
+  <div class="box-container">
+    <div class="box"><img src="images/icon-1.png" alt=""><h3>Aventure</h3></div>
+    <div class="box"><img src="images/icon-2.png" alt=""><h3>Guide touristique</h3></div>
+    <div class="box"><img src="images/icon-3.png" alt=""><h3>Randonnée</h3></div>
+    <div class="box"><img src="images/icon-4.png" alt=""><h3>Feu de camp</h3></div>
+    <div class="box"><img src="images/icon-5.png" alt=""><h3>Hors route</h3></div>
+    <div class="box"><img src="images/icon-6.png" alt=""><h3>Camping</h3></div>
+  </div>
+</section>
+
+<!-- SECTION À PROPOS -->
+<section class="home-about">
+  <div class="image">
+    <img src="images/about-img.jpg" alt="">
+  </div>
+  <div class="content">
+    <h3>À propos de nous</h3>
+    <p>
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident aliquid voluptas blanditiis
+      laboriosam porro sunt mollitia minus molestiae natus autem placeat, ex tempore, sint perspiciatis.
+    </p>
+    <a href="#" class="btn">Lire plus</a>
+  </div>
+</section>
+
+<!-- SECTION OFFRES POPULAIRES -->
+<section class="offres">
+  <div class="container my-5">
+    <h2 class="text-center mb-5 fw-bold text-primary">🌍 Nos Offres d'Agences</h2>
+
+    <div class="row g-4">
+      <div class="col-md-4" *ngFor="let agence of agences">
+        <div class="card h-100 border-0 shadow-lg agency-card">
+          <img [src]="'http://localhost:3000/upload/' + agence.image" class="card-img-top" alt="Image agence" />
+
+          <div class="card-body d-flex flex-column">
+            <h5 class="card-title text-center text-primary fw-bold">{{ agence.nomAgence }}</h5>
+            <p class="card-text small text-muted text-center">
+              {{ agence.description || 'Description non disponible.' }}
+            </p>
+
+            <ul class="list-group list-group-flush mb-3">
+              <li class="list-group-item"><strong>🏢 Adresse :</strong> {{ agence.adresse }}</li>
+              <li class="list-group-item"><strong>🎁 Offre :</strong> {{ agence.offre }}</li>
+              <li class="list-group-item"><strong>💰 Prix :</strong> {{ agence.prix }} TND</li>
+              <li class="list-group-item">
+                <strong>✅ Disponibilité :</strong>
+                <span class="badge" [ngClass]="agence.disponible ? 'bg-success' : 'bg-danger'">
+                  {{ agence.disponible ? 'Disponible' : 'Complet' }}
+                </span>
+              </li>
+            </ul>
+
+            <div class="mt-auto">
+              <a routerLink="/reservationclient" class="btn btn-gradient w-100 fw-bold"
+                 [class.disabled]="!agence.disponible">
+                Réserver maintenant
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bouton voir plus -->
+    <div class="text-center mt-4">
+      <a routerLink="/agences" class="voir-plus-btn">Voir toutes les offres</a>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION FOOTER -->
+<!-- SECTION FOOTER -->
+<section class="footer">
+  <div class="box-container">
+    <div class="box">
+      <h3>Liens rapides</h3>
+      <a href="#"><i class="fas fa-angle-right"></i> Accueil</a>
+      <a href="#"><i class="fas fa-angle-right"></i> À propos</a>
+      <a href="#"><i class="fas fa-angle-right"></i> Paquets</a>
+      <a href="#"><i class="fas fa-angle-right"></i> Réservation</a>
+    </div>
+
+    <div class="box">
+      <h3>Liens extra</h3>
+      <a href="#"><i class="fas fa-angle-right"></i> Posez vos questions</a>
+      <a href="#"><i class="fas fa-angle-right"></i> Politique de confidentialité</a>
+      <a href="#"><i class="fas fa-angle-right"></i> Nos termes</a>
+    </div>
+
+    <div class="box">
+      <h3>Info contact</h3>
+      <a href="#"><i class="fas fa-phone"></i> +229 60934817</a>
+      <a href="#"><i class="fas fa-envelope"></i> ronasdev&#64;gmail.com</a>
+      <a href="#"><i class="fas fa-map"></i> Cotonou - Bénin</a>
+    </div>
+
+    <div class="box">
+      <h3>Suivez-nous</h3>
+      <a href="#"><i class="fab fa-facebook"></i> Facebook</a>
+      <a href="#"><i class="fab fa-twitter"></i> Twitter</a>
+      <a href="#"><i class="fab fa-instagram"></i> Instagram</a>
+      <a href="#"><i class="fab fa-linkedin"></i> LinkedIn</a>
+    </div>
+  </div>
+</section>
+

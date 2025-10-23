@@ -1,0 +1,76 @@
+<div class="container mt-4">
+  <!-- Bouton retour -->
+  <div class="mb-3">
+    <a routerLink="/dashboard" class="btn btn-outline-primary btn-icon">
+      <i class="bi bi-arrow-left-circle me-1"></i> Retour
+    </a>
+  </div>
+
+  <!-- Titre -->
+  <h2>Liste des agences</h2>
+
+  <!-- Bouton ajouter -->
+  <button routerLink="/agences/ajouter" class="btn btn-success mb-3">
+    <i class="bi bi-plus-circle me-1"></i> Ajouter une agence
+  </button>
+
+  <!-- Tableau -->
+  <div class="table-responsive">
+    <table class="table table-striped align-middle text-center">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Nom Agence</th>
+          <th>Adresse</th>
+          <th>Offre</th>
+          <th>Description</th>
+          <th>Image</th>
+          <th>Prix</th>
+          <th>Disponible</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let agence of agences">
+          <td>{{ agence.id ?? agence._id }}</td>
+          <td>{{ agence.nomAgence }}</td>
+          <td>{{ agence.adresse }}</td>
+          <td>{{ agence.offre }}</td>
+          <td>{{ agence.description }}</td>
+          <td>
+            <img *ngIf="agence.image" [src]="'http://localhost:3000/upload/' + agence.image"
+                 alt="Image agence" width="80" height="50" style="object-fit: cover" />
+            <span *ngIf="!agence.image" class="text-muted">Pas d'image</span>
+          </td>
+          <td>{{ agence.prix | currency : "EUR" : "symbol" : "1.2-2" }}</td>
+          <td>
+            <span class="badge" [ngClass]="{'bg-success': agence.disponible, 'bg-secondary': !agence.disponible}">
+              {{ agence.disponible ? "Oui" : "Non" }}
+            </span>
+          </td>
+          <td class="text-center">
+  <div class="d-flex justify-content-center">
+    <!-- Bouton modifier -->
+    <button
+      [routerLink]="['/agences/modifier', agence.id ?? agence._id]"
+      (click)="onEditClick(agence)"
+      class="btn btn-outline-warning btn-sm me-2"
+    >
+      <i class="bi bi-pencil-square me-1"></i> Modifier
+    </button>
+
+    <!-- Bouton supprimer -->
+    <button
+      (click)="deleteAgence(agence.id ?? agence._id)"
+      class="btn btn-outline-danger btn-sm"
+    >
+      <i class="bi bi-trash me-1"></i> Supprimer
+    </button>
+  </div>
+</td>
+
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

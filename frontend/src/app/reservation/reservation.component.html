@@ -1,0 +1,29 @@
+<div class="container mt-4">
+  <h2>Réserver une agence</h2>
+  <form (ngSubmit)="submitReservation()" #form="ngForm" class="mt-3">
+
+    <div class="mb-3">
+      <label for="clientName" class="form-label">Nom du client</label>
+      <input id="clientName" name="clientName" [(ngModel)]="reservation.clientName" class="form-control" required />
+    </div>
+
+    <div class="mb-3">
+      <label for="clientEmail" class="form-label">Email</label>
+      <input id="clientEmail" name="clientEmail" [(ngModel)]="reservation.clientEmail" class="form-control" required />
+    </div>
+
+    <div class="mb-3">
+      <label for="agencyName" class="form-label">Nom de l'agence</label>
+      <input id="agencyName" name="agencyName" [(ngModel)]="reservation.agencyName" class="form-control" required />
+    </div>
+
+    <div class="mb-3">
+      <label for="date" class="form-label">Date</label>
+      <input id="date" name="date" type="date" [(ngModel)]="reservation.date" class="form-control" required />
+    </div>
+
+    <button type="submit" class="btn btn-primary w-100">Envoyer la réservation</button>
+
+    <p class="mt-3 text-success text-center">{{ message }}</p>
+  </form>
+</div>

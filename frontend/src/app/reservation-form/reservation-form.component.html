@@ -1,0 +1,111 @@
+<div class="container mt-4">
+  <div class="mb-3">
+    <a routerLink="/dashboardAdmin" class="btn btn-primary">
+      <i class="bi bi-arrow-left-circle me-1"></i> Retour
+    </a>
+  </div>
+
+  <h2 class="text-center mb-4 text-primary fw-bold">📌 Gestion des réservations</h2>
+
+  <form [formGroup]="reservationForm" (ngSubmit)="submit()" class="shadow p-4 rounded bg-light mb-4">
+    <div class="row g-3">
+      <div class="col-md-6">
+        <label>Nom Client</label>
+        <input type="text" formControlName="nomClient" class="form-control" />
+      </div>
+      <div class="col-md-6">
+        <label>Email</label>
+        <input type="email" formControlName="email" class="form-control" />
+      </div>
+      <div class="col-md-6">
+        <label>Agence</label>
+        <input type="text" formControlName="nomAgence" class="form-control" />
+      </div>
+      <div class="col-md-6">
+        <label>Téléphone</label>
+        <input type="text" formControlName="numeroTelephone" class="form-control" />
+      </div>
+      <div class="col-md-6">
+        <label>Date Début</label>
+        <input type="date" formControlName="dateDebutReservation" class="form-control" />
+      </div>
+      <div class="col-md-6">
+        <label>Date Fin</label>
+        <input type="date" formControlName="dateFinReservation" class="form-control" />
+      </div>
+      <div class="col-md-6">
+        <label>Heure Début</label>
+        <input type="time" formControlName="heureDebutReservation" class="form-control" />
+      </div>
+      <div class="col-md-6">
+        <label>Heure Fin</label>
+        <input type="time" formControlName="heureFinReservation" class="form-control" />
+      </div>
+    </div>
+
+    <div class="text-center mt-4">
+      <button class="btn btn-success me-2" type="submit">
+        {{ editingReservationId ? 'Modifier' : 'Créer' }} la Réservation
+      </button>
+      <button class="btn btn-secondary" type="button" (click)="reservationForm.reset()">Réinitialiser</button>
+    </div>
+  </form>
+
+  <!-- Liste des réservations -->
+  <div class="table-responsive shadow-sm rounded">
+    <table class="table table-hover table-striped align-middle text-center">
+      <thead class="table-primary">
+        <tr>
+          <th>Nom</th>
+          <th>Email</th>
+          <th>Agence</th>
+          <th>Téléphone</th>
+          <th>Date Début</th>
+          <th>Date Fin</th>
+          <th>Heure Début</th>
+          <th>Heure Fin</th>
+          <th>Statut</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let res of reservations">
+          <td>{{ res.nomClient }}</td>
+          <td>{{ res.email }}</td>
+          <td>{{ res.nomAgence }}</td>
+          <td>{{ res.numeroTelephone }}</td>
+          <td>{{ res.dateDebutReservation | date: 'shortDate' }}</td>
+          <td>{{ res.dateFinReservation | date: 'shortDate' }}</td>
+          <td>{{ res.heureDebutReservation }}</td>
+          <td>{{ res.heureFinReservation }}</td>
+          <td>
+            <span class="badge"
+              [ngClass]="{
+                'bg-warning text-dark': res.statut === 'En attente',
+                'bg-success': res.statut === 'Confirmée',
+                'bg-danger': res.statut === 'Annulée'
+              }">
+              {{ res.statut }}
+            </span>
+          </td>
+          <td>
+            <div class="btn-group">
+              <button class="btn btn-sm btn-success" (click)="confirm(res)">
+                <i class="bi bi-check-circle"></i>
+              </button>
+              <button class="btn btn-sm btn-warning text-dark" (click)="cancel(res)">
+                <i class="bi bi-x-circle"></i>
+              </button>
+              <button class="btn btn-sm btn-info" (click)="edit(res)">
+                <i class="bi bi-pencil"></i>
+              </button>
+              <button class="btn btn-sm btn-danger" (click)="delete(res._id)">
+                <i class="bi bi-trash"></i>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
